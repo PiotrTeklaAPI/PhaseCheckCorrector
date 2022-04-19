@@ -33,7 +33,9 @@ namespace PhaseCheckCorrector
         public List<Part> getModelObjectsPart(Model model)
         {
             // metoda tworząca listę partów, których Assembly Prefix jest równy textBox1
-            ModelObjectEnumerator enumerator = model.GetModelObjectSelector().GetAllObjects();
+            System.Type[] TypePart = new System.Type[1];
+            TypePart.SetValue(typeof(Part), 0);
+            ModelObjectEnumerator enumerator = model.GetModelObjectSelector().GetAllObjectsWithType(TypePart);
             while (enumerator.MoveNext())
             {
                 Part modelObject = enumerator.Current as Part;
@@ -50,7 +52,9 @@ namespace PhaseCheckCorrector
         public List<Reinforcement> getModelObjectsRebar(Model model)
         {
             // metoda tworząca listę prętów dołączonych do castunitu, których fatherpartprefix zaczyna się od tego co jest w textBox1
-            ModelObjectEnumerator enumerator = model.GetModelObjectSelector().GetAllObjects();
+            System.Type[] TypeReinforcement = new System.Type[1];
+            TypeReinforcement.SetValue(typeof(Reinforcement), 0);
+            ModelObjectEnumerator enumerator = model.GetModelObjectSelector().GetAllObjectsWithType(TypeReinforcement);
             while (enumerator.MoveNext())
             {
             Reinforcement modelObjectRebar = enumerator.Current as Reinforcement;
@@ -71,7 +75,9 @@ namespace PhaseCheckCorrector
         public List<Reinforcement> getModelObjectsRebarUnattached(Model model)
         {
             // metoda tworząca listę prętów nie dołączonych do żadnego cast unitu.
-            ModelObjectEnumerator enumerator = model.GetModelObjectSelector().GetAllObjects();
+            System.Type[] TypeReinforcementUn = new System.Type[1];
+            TypeReinforcementUn.SetValue(typeof(Reinforcement), 0);
+            ModelObjectEnumerator enumerator = model.GetModelObjectSelector().GetAllObjectsWithType(TypeReinforcementUn);
             while (enumerator.MoveNext())
             { 
                 Reinforcement modelObjectRebar = enumerator.Current as Reinforcement;
@@ -94,7 +100,9 @@ namespace PhaseCheckCorrector
         public List<Assembly> getModelObjectsAssembly(Model model)
         {
             // metoda tworząca listę subassembly, których Assembly Prefix jest równy textBox1
-            ModelObjectEnumerator enumerator = model.GetModelObjectSelector().GetAllObjects();
+            System.Type[] TypeAssembly = new System.Type[1];
+            TypeAssembly.SetValue(typeof(Assembly), 0);
+            ModelObjectEnumerator enumerator = model.GetModelObjectSelector().GetAllObjectsWithType(TypeAssembly);
             modelObjectsAssembly.Clear();
             while (enumerator.MoveNext())
             {
